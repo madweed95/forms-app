@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Field, FormConfig, FormValues } from "../models/CreateForm";
 
 const handleConfigChange = (
@@ -40,9 +40,9 @@ export const ConfigTab: React.FC<{
 };
 export const ResultTab: React.FC<{
   config: FormConfig;
-}> = ({ config }) => {
-  const [formValues, setFormValues] = useState<FormValues>({});
-
+  formValues: FormValues;
+  setFormValues: React.Dispatch<React.SetStateAction<FormValues>>;
+}> = ({ config, formValues, setFormValues }) => {
   const handleInputChange = (
     fieldId: string,
     value: string | number | readonly string[] | boolean | Date | undefined

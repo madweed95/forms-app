@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { FormConfig } from "../models/CreateForm";
+import { FormConfig, FormValues } from "../models/CreateForm";
 import "./FormsGenerator.css";
 import { ConfigTab, ResultTab } from "./Tabs";
 
 export const FormsGenerator: React.FC = () => {
+  const [formValues, setFormValues] = useState<FormValues>({});
   const [tab, setTab] = useState<"config" | "result">("config");
   const [textAreaValue, setTextAreaValue] = useState<string>("");
   const [config, setConfig] = useState<FormConfig>({
@@ -35,7 +36,11 @@ export const FormsGenerator: React.FC = () => {
           setConfig={setConfig}
         />
       ) : (
-        <ResultTab config={config} />
+        <ResultTab
+          config={config}
+          formValues={formValues}
+          setFormValues={setFormValues}
+        />
       )}
     </div>
   );
